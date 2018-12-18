@@ -1,0 +1,16 @@
+#Streudiagramm: geom_point()
+# Bibliotheken laden
+library(dplyr) #zur Aufbereitung von Daten
+library(ggplot2) #für Diagramme
+library(ggthemes) #Auswahl von vordefinierten Layouts für Diagramme
+
+#Daten aus einer csv-Datei laden
+meine_daten <- read.csv("Datei.csv", header=TRUE, sep=";") #header = True, d.h. die Spalten haben Überschriften / Trennzeichen: hier: ";", ist individuell anzupassen
+
+#Das Streudiagramm mit geom_point() und zusätzlichen Schichten (layer) erzeugen
+meine_daten %>% ggplot(aes(Daten_der_x_Achse, Daten_der_y_Achse)) +
+  geom_point()+
+  xlab("Beschriftung der x-Achse") + 
+  ylab("Beschriftung der y-Achse") +
+  ggtitle("Diagrammtitel") + 
+  theme_economist() # Darstellung bspw. im Layout des Wirtschaftsmagazins "The Economist"
